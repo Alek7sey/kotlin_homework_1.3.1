@@ -5,7 +5,7 @@ fun main() {
     println(agoToText(1330))
     println(agoToText(3601))
     println(agoToText(7200))
-    println(agoToText(19000))
+    println(agoToText(19000*2+3600))
     println(agoToText(191000))
     println(agoToText(1910000))
 }
@@ -42,9 +42,9 @@ fun secondsToMinutes(seconds: Int): String {
 
 fun secondsToHours(seconds: Int): String {
     val hours = seconds / (60 * 60)
-    val result = when (hours % 10) {
-        1 -> "$hours час"
-        in 2..4 -> "$hours часа"
+    val result = when {
+        hours % 10 == 1 && hours != 11 -> "$hours час"
+        hours % 10 == 2 || hours % 10 == 3 || hours % 10 == 4 -> "$hours часа"
         else -> "$hours часов"
     }
     return result
