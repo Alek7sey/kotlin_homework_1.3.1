@@ -1,7 +1,7 @@
 fun main() {
     println(agoToText(30))
     println(agoToText(69))
-    println(agoToText(359))
+    println(agoToText(660))
     println(agoToText(1330))
     println(agoToText(3601))
     println(agoToText(7200))
@@ -32,9 +32,9 @@ fun agoToText(seconds: Int): String {
 
 fun secondsToMinutes(seconds: Int): String {
     val minutes = (seconds / 60)
-    val result = when (minutes % 10) {
-        1 -> "$minutes минуту"
-        in 2..4 -> "$minutes минуты"
+    val result = when {
+        minutes % 10 == 1 && minutes != 11 -> "$minutes минуту"
+        minutes % 10 == 2 || minutes % 10 == 3 || minutes % 10 == 4 -> "$minutes минуты"
         else -> "$minutes минут"
     }
     return result
